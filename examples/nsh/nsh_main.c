@@ -128,7 +128,7 @@ int nsh_main(int argc, char *argv[])
   /* Call all C++ static constructors */
 
 #if defined(CONFIG_EXAMPLES_NSH_CXXINITIALIZE)
-  up_cxxinitialize();
+  up_cxxinitialize();   // initialization of the static C++ class instances
 #endif
 
   /* Make sure that we are using our symbol table */

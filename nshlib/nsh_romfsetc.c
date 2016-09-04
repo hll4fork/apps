@@ -98,6 +98,8 @@ int nsh_romfsetc(void)
   int  ret;
 
   /* Create a ROM disk for the /etc filesystem */
+  // NSECTORS(romfs_img_len), calculate the number of sectors needed for romfs
+  // romfs_img, etc fs's image 
 
   ret = romdisk_register(CONFIG_NSH_ROMFSDEVNO, romfs_img,
                          NSECTORS(romfs_img_len), CONFIG_NSH_ROMFSSECTSIZE);
@@ -112,6 +114,7 @@ int nsh_romfsetc(void)
   finfo("Mounting ROMFS filesystem at target=%s with source=%s\n",
         CONFIG_NSH_ROMFSMOUNTPT, MOUNT_DEVNAME);
 
+  // MOUNT_DEVNAME = "/dev/ram0", CONFIG_NSH_ROMFSMOUNTPT "/etc"
   ret = mount(MOUNT_DEVNAME, CONFIG_NSH_ROMFSMOUNTPT, "romfs", MS_RDONLY, NULL);
   if (ret < 0)
     {
